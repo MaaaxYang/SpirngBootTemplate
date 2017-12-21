@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ryan.atom.dao.BPayBatchDao">
+
+    <select id="firstOrDefault" resultType="com.ryan.atom.model.BPayBatch" >
+        select * from tp_bpay_batch where is_Deleted = 0 limit 1;
+    </select>
+
+</mapper>
