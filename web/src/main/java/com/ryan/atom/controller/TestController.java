@@ -14,8 +14,12 @@ import com.ryan.atom.test.service.*;
 import com.ryan.atom.test.utils.BeanUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Proxy;
@@ -141,5 +145,23 @@ public class TestController {
         MyAnnotationTest test = new MyAnnotationTest();
         test.analyze();
         return "ok myAnnotation";
+    }
+
+    @RequestMapping("/myShiro")
+    public String myShiro(String name,String password)
+    {
+        try{
+            UsernamePasswordToken token = new UsernamePasswordToken(name, password);
+            SecurityUtils.getSubject().login(token);
+            return "true";
+        }catch (Exception e){
+            return "false";
+        }
+    }
+
+    @RequiresPermissions("权限添加")
+    public String myShroAuthent()
+    {
+        return "myShroAuthent";
     }
 }
