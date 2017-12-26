@@ -5,7 +5,6 @@ import com.ryan.atom.model.ServiceException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -13,18 +12,14 @@ import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 import java.util.Set;
 
-@ControllerAdvice
-@ResponseBody
+@RestControllerAdvice
 public class ExceptionInterceptor {
 
     /**
@@ -127,6 +122,7 @@ public class ExceptionInterceptor {
     @ExceptionHandler(ServiceException.class)
     public ApiResult handleServiceException(ServiceException e) {
         //logger.error("业务逻辑异常", e);
+        System.out.println("this's handleServiceException");
         return ApiResult.error(HttpStatus.INTERNAL_SERVER_ERROR.value(),"业务逻辑异常：" + e.getMessage());
     }
 
@@ -137,6 +133,7 @@ public class ExceptionInterceptor {
     @ExceptionHandler(Exception.class)
     public ApiResult handleException(Exception e) {
         //logger.error("通用异常", e);
+        e.printStackTrace();
         return ApiResult.error(HttpStatus.INTERNAL_SERVER_ERROR.value(),"通用异常：" + e.getMessage());
     }
 
