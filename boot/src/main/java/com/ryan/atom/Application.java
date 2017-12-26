@@ -22,6 +22,7 @@ public class Application {
     public static  void main(String[] args) throws Exception
     {
          ConfigurableApplicationContext context = SpringApplication.run(Application.class);
+         System.out.println("end");
 //         AopService service = context.getBean(com.ryan.atom.test.service.AopServiceImpl.class);
 //         System.out.println("end");
     }

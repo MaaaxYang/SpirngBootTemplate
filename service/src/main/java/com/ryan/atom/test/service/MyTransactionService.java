@@ -8,7 +8,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
  */
 public class MyTransactionService {
 
-    @Transactional
+
     public static void funcA(){
         //TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         System.out.println("func - a start");
@@ -17,7 +17,7 @@ public class MyTransactionService {
         System.out.println("func - a end");
     }
 
-    @Transactional
+
     public static void funcB(){
         System.out.println("func - b start");
         try {

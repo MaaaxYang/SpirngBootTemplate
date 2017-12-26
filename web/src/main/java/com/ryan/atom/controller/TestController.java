@@ -1,6 +1,7 @@
 package com.ryan.atom.controller;
 
 import com.ryan.atom.model.BPayBatch;
+import com.ryan.atom.model.ServiceException;
 import com.ryan.atom.test.*;
 import com.ryan.atom.test.annotation.MyAnnotationTest;
 import com.ryan.atom.test.aop.AopTest;
@@ -163,5 +164,17 @@ public class TestController {
     public String myShroAuthent()
     {
         return "myShroAuthent";
+    }
+
+    @RequestMapping("/myExceptionFilter")
+    public String myExceptionFilter()
+    {
+        throw new RuntimeException("this's controller exception");
+    }
+
+    @RequestMapping("/mySericeError")
+    public String mySericeError()
+    {
+        throw new ServiceException("this's controller exception");
     }
 }

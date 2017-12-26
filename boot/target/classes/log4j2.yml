@@ -10,7 +10,7 @@ Configuration:
       - name: log.level.atom
         value: trace
       - name: log.path
-        value: F://SpringBootLog/logs
+        value: /SpringBootLog/logs
       - name: project.name
         value: atom
 

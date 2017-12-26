@@ -19,7 +19,9 @@ public class MyFilter2 implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("--自定义filter2 doFilter--");
+        System.out.println("--自定义filter2 doFilter before--");
+        filterChain.doFilter(servletRequest,servletResponse);
+        System.out.println("--自定义filter2 doFilter after--");
     }
 
     @Override

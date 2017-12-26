@@ -28,10 +28,9 @@ public class MyFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("--自定义filter doFilter--");
-        System.out.println(((HttpServletRequest)servletRequest).getLocale().getVariant());
-        System.out.println(((HttpServletResponse)servletResponse).getStatus());
+        System.out.println("--自定义filter doFilter before--");
         filterChain.doFilter(servletRequest,servletResponse);
+        System.out.println("--自定义filter doFilter after--");
     }
 
     @Override

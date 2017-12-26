@@ -15,7 +15,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="atom" target="1.6" />
-      <module name="boot" target="1.6" />
+      <module name="boot" target="1.8" />
       <module name="dao" target="1.6" />
       <module name="model" target="1.6" />
       <module name="service" target="1.6" />
