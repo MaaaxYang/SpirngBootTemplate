@@ -24,3 +24,7 @@ spring:
       initialSize: 5
 
 mybatis.config-location: classpath:mybatis-config.xml
+
+myTestConfiguration:
+  propertyA: 123
+  propertyB: niubi
